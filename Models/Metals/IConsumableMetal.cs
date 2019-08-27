@@ -13,7 +13,7 @@ namespace Mistborn.Models
         //flarePerSecond - how much is consumed per second when flaring  
         //rarity?
         //toxicity?
-
+        //test
         int BurnPerSecond { get; set; }
         int FlarePerSecond { get; set; }
         Push pushEffect { get; set; }
