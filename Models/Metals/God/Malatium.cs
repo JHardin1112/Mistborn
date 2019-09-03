@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Mistborn.Models.Metals.God
 {
-    class Malatium
+    class Malatium:IConsumableMetal
     {
+        public decimal BurnPerSecond { get; set; }
+        public decimal FlareCost { get; set; }
+        public Push pushEffect { get; set; }
+        public Pull pullEffect { get; set; }
     }
 }

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Mistborn.Actions;
+using Mistborn.Models.Metals;
 
 namespace Mistborn
 {
@@ -24,6 +26,18 @@ namespace Mistborn
             {
                 lbMetals.Items.Add(item);
             }
+
+            IAllomanticActions allomanticActions = new Mistborn.Actions.AllomanticActions();
+
+            IConsumableMetal bronze = new Models.Metals.Basic.Bronze();
+            IPlayer Player = new Player();
+            Player.IsFlaring = true;
+
+            bronze.BurnPerSecond = 2.0M;
+            bronze.FlareCost = 10.0M;
+
+            allomanticActions.BurnMetals(bronze, Player, 30);
         }
+
     }
 }

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Mistborn.Models.Metals.High
 {
-    class Electrum
+    class Electrum:IConsumableMetal
     {
+        public decimal BurnPerSecond { get; set; }
+        public decimal FlareCost { get; set; }
+        public Push pushEffect { get; set; }
+        public Pull pullEffect { get; set; }
     }
 }

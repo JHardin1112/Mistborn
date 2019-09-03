@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mistborn.Models
 {
-    interface IConsumableMetal
+    public interface IConsumableMetal
     {
         //What properties does a Consumable Metal have?
         //burnPerSecond - how much is consumed per second when burning
@@ -14,8 +14,8 @@ namespace Mistborn.Models
         //rarity?
         //toxicity?
         //test
-        int BurnPerSecond { get; set; }
-        int FlarePerSecond { get; set; }
+        decimal BurnPerSecond { get; set; }
+        decimal FlareCost { get; set; } //should cost an initial amount/drain and then burnPerSecond kicks in.
         Push pushEffect { get; set; }
         Pull pullEffect { get; set; }
 

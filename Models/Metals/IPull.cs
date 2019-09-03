@@ -8,6 +8,6 @@ namespace Mistborn.Models.Metals
 {
     interface IPull
     {
-        string met
+   
     }
 }

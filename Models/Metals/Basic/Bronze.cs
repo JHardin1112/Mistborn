@@ -8,8 +8,8 @@ namespace Mistborn.Models.Metals.Basic
 {
     class Bronze:IConsumableMetal
     {
-        public int BurnPerSecond { get; set; }
-        public int FlarePerSecond { get; set; }
+        public decimal BurnPerSecond { get; set; }
+        public decimal FlareCost { get; set; }
         public Push pushEffect { get; set; }
         public Pull pullEffect { get; set; }
     }
