@@ -22,14 +22,15 @@ namespace Mistborn.Actions
             Player = player;
             UnitsConsumed = unitsConsumed;
 
-            var timer = new System.Timers.Timer(1000);
+            var timer = new System.Timers.Timer();
+            timer.Interval = 1000;
             timer.Elapsed += _timer_Elapsed;
             timer.Enabled = true;
             _timer = timer;
 
             if (Player.IsFlaring)
             {
-                unitsConsumed -= Metal.FlareCost;
+                UnitsConsumed -= Metal.FlareCost;
             }
 
         }
@@ -37,11 +38,12 @@ namespace Mistborn.Actions
 
         private void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            while (UnitsConsumed > 0)
+            if (UnitsConsumed > 0)
             {
                 UnitsConsumed -= Metal.BurnPerSecond;
                 Console.WriteLine("Units Remaining: " + UnitsConsumed);
             }
         }
+
     }
 }

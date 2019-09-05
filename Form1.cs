@@ -27,6 +27,10 @@ namespace Mistborn
                 lbMetals.Items.Add(item);
             }
 
+        }
+
+        private void BtnBurn_Click(object sender, EventArgs e)
+        {
             IAllomanticActions allomanticActions = new Mistborn.Actions.AllomanticActions();
 
             IConsumableMetal bronze = new Models.Metals.Basic.Bronze();
@@ -38,6 +42,5 @@ namespace Mistborn
 
             allomanticActions.BurnMetals(bronze, Player, 30);
         }
-
     }
 }

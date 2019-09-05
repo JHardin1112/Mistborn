@@ -42,6 +42,7 @@
             this.btnBurn.TabIndex = 0;
             this.btnBurn.Text = "Burn";
             this.btnBurn.UseVisualStyleBackColor = true;
+            this.btnBurn.Click += new System.EventHandler(this.BtnBurn_Click);
             // 
             // btnFlare
             // 
