@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBurn = new System.Windows.Forms.Button();
+            this.btnBurnStart = new System.Windows.Forms.Button();
             this.btnFlare = new System.Windows.Forms.Button();
             this.lbMetals = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBurnStop = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnBurn
+            // btnBurnStart
             // 
-            this.btnBurn.Location = new System.Drawing.Point(340, 174);
-            this.btnBurn.Name = "btnBurn";
-            this.btnBurn.Size = new System.Drawing.Size(75, 23);
-            this.btnBurn.TabIndex = 0;
-            this.btnBurn.Text = "Burn";
-            this.btnBurn.UseVisualStyleBackColor = true;
-            this.btnBurn.Click += new System.EventHandler(this.BtnBurn_Click);
+            this.btnBurnStart.Location = new System.Drawing.Point(247, 161);
+            this.btnBurnStart.Name = "btnBurnStart";
+            this.btnBurnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnBurnStart.TabIndex = 0;
+            this.btnBurnStart.Text = "Start Burn";
+            this.btnBurnStart.UseVisualStyleBackColor = true;
+            this.btnBurnStart.Click += new System.EventHandler(this.BtnBurnStart_Click);
             // 
             // btnFlare
             // 
-            this.btnFlare.Location = new System.Drawing.Point(340, 203);
+            this.btnFlare.Location = new System.Drawing.Point(247, 233);
             this.btnFlare.Name = "btnFlare";
             this.btnFlare.Size = new System.Drawing.Size(75, 23);
             this.btnFlare.TabIndex = 1;
@@ -70,16 +71,28 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             // 
+            // btnBurnStop
+            // 
+            this.btnBurnStop.Location = new System.Drawing.Point(247, 190);
+            this.btnBurnStop.Name = "btnBurnStop";
+            this.btnBurnStop.Size = new System.Drawing.Size(75, 23);
+            this.btnBurnStop.TabIndex = 4;
+            this.btnBurnStop.Text = "Stop Burn";
+            this.btnBurnStop.UseVisualStyleBackColor = true;
+            this.btnBurnStop.Click += new System.EventHandler(this.BtnBurnStop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBurnStop);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbMetals);
             this.Controls.Add(this.btnFlare);
-            this.Controls.Add(this.btnBurn);
+            this.Controls.Add(this.btnBurnStart);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -89,10 +102,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnBurn;
+        private System.Windows.Forms.Button btnBurnStart;
         private System.Windows.Forms.Button btnFlare;
         private System.Windows.Forms.ListBox lbMetals;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBurnStop;
     }
 }
 

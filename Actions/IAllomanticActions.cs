@@ -9,6 +9,8 @@ namespace Mistborn.Actions
 {
     public interface IAllomanticActions
     {
+        System.Timers.Timer timer {get;set;}
         public void BurnMetals(IConsumableMetal metal, IPlayer player, decimal unitsConsumed);
+        public void StopBurn(System.Timers.Timer timer);
     }
 }

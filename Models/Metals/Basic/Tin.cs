@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Mistborn.Models.Metals.Basic
 {
-    class Tin:IConsumableMetal
+    class Tin : IConsumableMetal
     {
-        public decimal BurnPerSecond { get; set; }
+        public double BurnRateInMilliseconds { get; set; }
+        public decimal BurnPerBurnRateInMilliseconds { get; set; }
         public decimal FlareCost { get; set; }
         public Push pushEffect { get; set; }
         public Pull pullEffect { get; set; }

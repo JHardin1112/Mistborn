@@ -15,6 +15,8 @@ namespace Mistborn
 {
     public partial class Form1 : Form
     {
+        IAllomanticActions allomanticActions = new Mistborn.Actions.AllomanticActions();
+
         public Form1()
         {
             InitializeComponent();
@@ -29,18 +31,25 @@ namespace Mistborn
 
         }
 
-        private void BtnBurn_Click(object sender, EventArgs e)
+        private void BtnBurnStart_Click(object sender, EventArgs e)
         {
-            IAllomanticActions allomanticActions = new Mistborn.Actions.AllomanticActions();
-
             IConsumableMetal bronze = new Models.Metals.Basic.Bronze();
-            IPlayer Player = new Player();
-            Player.IsFlaring = true;
-
-            bronze.BurnPerSecond = 1.0M;
-            bronze.FlareCost = 10.0M;
+            IPlayer Player = new Player
+            {
+                IsFlaring = true
+            };
+            var timer = new System.Timers.Timer();
+            allomanticActions.timer = timer;
+            allomanticActions.timer.Interval = (double)bronze.BurnRateInMilliseconds;
+            allomanticActions.timer.Enabled = true;
 
             allomanticActions.BurnMetals(bronze, Player, 30);
+        }
+
+        private void BtnBurnStop_Click(object sender, EventArgs e)
+        {
+            //allomanticActions.timer.Stop();
+            allomanticActions.StopBurn(allomanticActions.timer);
         }
     }
 }

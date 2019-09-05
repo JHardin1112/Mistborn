@@ -14,7 +14,8 @@ namespace Mistborn.Models
         //rarity?
         //toxicity?
         //test
-        decimal BurnPerSecond { get; set; }
+        double BurnRateInMilliseconds { get; set; }
+        decimal BurnPerBurnRateInMilliseconds { get; set; }
         decimal FlareCost { get; set; } //should cost an initial amount/drain and then burnPerSecond kicks in.
         Push pushEffect { get; set; }
         Pull pullEffect { get; set; }

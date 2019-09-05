@@ -9,12 +9,14 @@ using Mistborn.Models;
 
 namespace Mistborn.Actions
 {
-    public class AllomanticActions:IAllomanticActions
+    public class AllomanticActions : IAllomanticActions
     {
-        static System.Timers.Timer _timer;
+        System.Timers.Timer _timer;
         IConsumableMetal Metal;
         IPlayer Player;
         decimal UnitsConsumed;
+
+        public System.Timers.Timer timer { get; set; }
 
         public void BurnMetals(IConsumableMetal metal, IPlayer player, decimal unitsConsumed)
         {
@@ -22,11 +24,7 @@ namespace Mistborn.Actions
             Player = player;
             UnitsConsumed = unitsConsumed;
 
-            var timer = new System.Timers.Timer();
-            timer.Interval = 500;
             timer.Elapsed += _timer_Elapsed;
-            timer.Enabled = true;
-            _timer = timer;
 
             if (Player.IsFlaring)
             {
@@ -34,15 +32,15 @@ namespace Mistborn.Actions
             }
 
             Console.WriteLine(Metal.ToString() + " Units Remaining: " + UnitsConsumed);
-            
+
         }
 
 
         private void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            if (UnitsConsumed > 0)
+            if (UnitsConsumed > 1)
             {
-                UnitsConsumed -= Metal.BurnPerSecond;
+                UnitsConsumed -= Metal.BurnPerBurnRateInMilliseconds;
                 Console.WriteLine(Metal.ToString() + " Units Remaining: " + UnitsConsumed);
             }
             else
@@ -51,6 +49,12 @@ namespace Mistborn.Actions
                 _timer.Enabled = false;
             }
 
+        }
+
+        public void StopBurn(System.Timers.Timer timer)
+        {
+            timer.Stop();
+            Console.WriteLine(Metal.ToString() + " Units Remaining: " + UnitsConsumed);
         }
 
     }
