@@ -23,7 +23,7 @@ namespace Mistborn.Actions
             UnitsConsumed = unitsConsumed;
 
             var timer = new System.Timers.Timer();
-            timer.Interval = 1000;
+            timer.Interval = 500;
             timer.Elapsed += _timer_Elapsed;
             timer.Enabled = true;
             _timer = timer;
@@ -33,6 +33,8 @@ namespace Mistborn.Actions
                 UnitsConsumed -= Metal.FlareCost;
             }
 
+            Console.WriteLine(Metal.ToString() + " Units Remaining: " + UnitsConsumed);
+            
         }
 
 
@@ -41,8 +43,14 @@ namespace Mistborn.Actions
             if (UnitsConsumed > 0)
             {
                 UnitsConsumed -= Metal.BurnPerSecond;
-                Console.WriteLine("Units Remaining: " + UnitsConsumed);
+                Console.WriteLine(Metal.ToString() + " Units Remaining: " + UnitsConsumed);
             }
+            else
+            {
+                Console.WriteLine(Metal.ToString() + " Extinguished!");
+                _timer.Enabled = false;
+            }
+
         }
 
     }

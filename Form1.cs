@@ -37,7 +37,7 @@ namespace Mistborn
             IPlayer Player = new Player();
             Player.IsFlaring = true;
 
-            bronze.BurnPerSecond = 2.0M;
+            bronze.BurnPerSecond = 1.0M;
             bronze.FlareCost = 10.0M;
 
             allomanticActions.BurnMetals(bronze, Player, 30);
