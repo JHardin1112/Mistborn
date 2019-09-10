@@ -1,15 +1,9 @@
 ﻿using Mistborn.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mistborn.Actions;
-using Mistborn.Models.Metals;
+using System.Reflection;
+using System.Linq;
 
 namespace Mistborn
 {
@@ -26,30 +20,41 @@ namespace Mistborn
         {
             foreach (var item in Enum.GetNames(typeof(ConsumableMetals.BasicMetals)))
             {
-                lbMetals.Items.Add(item);
+                comboBox1.Items.Add(item);
             }
 
         }
 
         private void BtnBurnStart_Click(object sender, EventArgs e)
         {
-            IConsumableMetal bronze = new Models.Metals.Basic.Bronze();
+            string metalnamespace = "Mistborn.Models.Metals.Basic.";
+            Type type = Type.GetType(metalnamespace + comboBox1.Text);
+            IConsumableMetal metal = (IConsumableMetal)Activator.CreateInstance(type);
+
             IPlayer Player = new Player
             {
                 IsFlaring = true
             };
+
+            double burnRate = PropertyValue<double>(metal, "BurnRateInMilliseconds");
+
             var timer = new System.Timers.Timer();
             allomanticActions.timer = timer;
-            allomanticActions.timer.Interval = (double)bronze.BurnRateInMilliseconds;
+            allomanticActions.timer.Interval = burnRate;
             allomanticActions.timer.Enabled = true;
 
-            allomanticActions.BurnMetals(bronze, Player, 30);
+            allomanticActions.BurnMetals(metal, Player, Decimal.Parse(txtUnitsConsumed.Text.Trim()));
         }
 
         private void BtnBurnStop_Click(object sender, EventArgs e)
         {
-            //allomanticActions.timer.Stop();
             allomanticActions.StopBurn(allomanticActions.timer);
         }
+
+        public static T PropertyValue<T>(object sender, string propertyName)
+        {
+            return (T)sender.GetType().GetProperty(propertyName).GetValue(sender, null);
+        }
+
     }
 }

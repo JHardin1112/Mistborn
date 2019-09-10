@@ -11,7 +11,6 @@ namespace Mistborn.Actions
 {
     public class AllomanticActions : IAllomanticActions
     {
-        System.Timers.Timer _timer;
         IConsumableMetal Metal;
         IPlayer Player;
         decimal UnitsConsumed;
@@ -40,13 +39,21 @@ namespace Mistborn.Actions
         {
             if (UnitsConsumed > 1)
             {
-                UnitsConsumed -= Metal.BurnPerBurnRateInMilliseconds;
-                Console.WriteLine(Metal.ToString() + " Units Remaining: " + UnitsConsumed);
+                if (UnitsConsumed - Metal.BurnPerBurnRateInMilliseconds == 0)
+                {
+                    UnitsConsumed -= Metal.BurnPerBurnRateInMilliseconds;
+                    Console.WriteLine(Metal.ToString() + " Units Remaining: " + UnitsConsumed);
+                }
+                else
+                {
+                    Console.WriteLine("You do not have enough " + Metal.ToString() + " remaining to burn!");
+                    timer.Enabled = false;
+                }
             }
-            else
+            else if (UnitsConsumed < 1)
             {
                 Console.WriteLine(Metal.ToString() + " Extinguished!");
-                _timer.Enabled = false;
+                timer.Enabled = false;
             }
 
         }

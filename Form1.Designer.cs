@@ -30,9 +30,9 @@
         {
             this.btnBurnStart = new System.Windows.Forms.Button();
             this.btnFlare = new System.Windows.Forms.Button();
-            this.lbMetals = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnBurnStop = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtUnitsConsumed = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnBurnStart
@@ -54,23 +54,6 @@
             this.btnFlare.Text = "Flare";
             this.btnFlare.UseVisualStyleBackColor = true;
             // 
-            // lbMetals
-            // 
-            this.lbMetals.FormattingEnabled = true;
-            this.lbMetals.Location = new System.Drawing.Point(65, 161);
-            this.lbMetals.Name = "lbMetals";
-            this.lbMetals.Size = new System.Drawing.Size(120, 95);
-            this.lbMetals.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(244, 305);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
-            // 
             // btnBurnStop
             // 
             this.btnBurnStop.Location = new System.Drawing.Point(247, 190);
@@ -81,14 +64,29 @@
             this.btnBurnStop.UseVisualStyleBackColor = true;
             this.btnBurnStop.Click += new System.EventHandler(this.BtnBurnStop_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 12);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 5;
+            // 
+            // txtUnitsConsumed
+            // 
+            this.txtUnitsConsumed.Location = new System.Drawing.Point(160, 13);
+            this.txtUnitsConsumed.Name = "txtUnitsConsumed";
+            this.txtUnitsConsumed.Size = new System.Drawing.Size(100, 20);
+            this.txtUnitsConsumed.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtUnitsConsumed);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnBurnStop);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbMetals);
             this.Controls.Add(this.btnFlare);
             this.Controls.Add(this.btnBurnStart);
             this.Name = "Form1";
@@ -104,9 +102,9 @@
 
         private System.Windows.Forms.Button btnBurnStart;
         private System.Windows.Forms.Button btnFlare;
-        private System.Windows.Forms.ListBox lbMetals;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBurnStop;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtUnitsConsumed;
     }
 }
 

@@ -8,9 +8,9 @@ namespace Mistborn.Models.Metals.Basic
 {
     class Copper:IConsumableMetal
     {
-        public double BurnRateInMilliseconds { get; set; }
-        public decimal BurnPerBurnRateInMilliseconds { get; set; }
-        public decimal FlareCost { get; set; }
+        public double BurnRateInMilliseconds { get; set; } = 700;
+        public decimal BurnPerBurnRateInMilliseconds { get; set; } = 2;
+        public decimal FlareCost { get; set; } = 3;
         public Push pushEffect { get; set; }
         public Pull pullEffect { get; set; }
     }
